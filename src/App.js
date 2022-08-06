@@ -1,0 +1,25 @@
+import { filmes } from "./filmes";
+
+function Filmes() {
+  function filtrarFilmesPorAno(ano = 2000) {
+    return filmes.filter((filme) => filme.lancamento > ano);
+  }
+
+  function mapearFilmes(filmes) {
+    return filmes
+      .map((filme) => filme.generos)
+      .flat()
+      .map((genero) => <p>{genero}</p>);
+  }
+
+  return (
+    <div>
+      <h1>Filmes por Ano</h1>
+      {mapearFilmes(filtrarFilmesPorAno())}
+    </div>
+  );
+}
+
+export default function App() {
+  return <Filmes />;
+}
